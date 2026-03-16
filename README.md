@@ -1,0 +1,1 @@
+# wazuh-sysmon-detection-lab-
