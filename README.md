@@ -1,1 +1,3 @@
-# wazuh-sysmon-detection-lab
+# Wazuh + Sysmon Detection Lab
+
+## 1. Project Summary
