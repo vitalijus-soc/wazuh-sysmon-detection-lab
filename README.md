@@ -61,7 +61,9 @@ This allowed me to validate whether the telemetry pipeline from endpoint to SIEM
 
 ## 5. Telemetry and Evidence
 
-### Sysmon Event ID 1 – Process Creation
+### PowerShell Execution
+
+![PowerShell Command](screenshots/powershell-command-execution.png)
 
 ### Sysmon Event ID 1 – Process Creation
 
@@ -75,10 +77,6 @@ This event is useful because it shows:
 
 ![Sysmon Event ID 1](screenshots/sysmon-event-id-1-process-creation.png)
 
-### PowerShell Execution
-
-![PowerShell Command](screenshots/powershell-command-execution.png)
-
 ---
 
 ### Sysmon Event ID 3 – Network Connection
@@ -91,8 +89,6 @@ This event is important because it shows:
 - destination port
 - protocol used
 - timestamp of the connection
-
-### Sysmon Event ID 3 – Network Connection
 
 ![Sysmon Event ID 3](screenshots/sysmon-event-id-3-network-connection.png)
 
