@@ -2,17 +2,16 @@
 
 ## 1. Project Summary
 
-
-This project demonstrates how Windows 11 Sysmon telemetry can be collected, analyzed, and correlated in Wazuh SIEM to detect suspicious PowerShell activity and related network behavior.
+This project demonstrates how endpoint telemetry from Windows 11 (Sysmon) can be collected, correlated, and analyzed in Wazuh SIEM to detect suspicious PowerShell activity.
 
 The lab focuses on:
 - Sysmon process creation events
 - Sysmon network connection events
 - Wazuh alert generation
-- basic log triage and detection validation
+- Basic log triage and detection validation
 - MITRE ATT&CK mapping for observed activity
 
-This project was built as part of my SOC / Blue Team learning journey to better understand how endpoint telemetry becomes actionable security alerts.
+This lab replicates a real-world SOC workflow from telemetry collection to detection and investigation.
 
 ---
 
@@ -56,10 +55,11 @@ The test focused on:
 - outbound HTTP network connection initiated by PowerShell
 
 This allowed me to validate whether the telemetry pipeline from endpoint to SIEM was working correctly.
+This behavior simulates a common attacker technique involving PowerShell-based command execution and network communication.
 
 ---
 
-## 5. Telemetry and Evidence
+## 5. Telemetry
 
 ### PowerShell Execution
 
@@ -67,7 +67,8 @@ This allowed me to validate whether the telemetry pipeline from endpoint to SIEM
 
 ### Sysmon Event ID 1 – Process Creation
 
-Sysmon captured the execution of `powershell.exe` together with its command-line arguments.
+Sysmon captured execution of powershell.exe with suspicious parameters, 
+including encoded command execution, which is commonly used for obfuscation.
 
 This event is useful because it shows:
 - parent / child process context
@@ -105,7 +106,7 @@ This confirms that:
 
 ![Wazuh Alert](screenshots/wazuh-alert-t1059-001.png)
 
-### Wazuh Event Details (JSON)
+### Deep Event Analysis (Wazuh JSON)
 
 The raw event data collected by Wazuh provides detailed insight into the executed command.
 
@@ -116,7 +117,7 @@ This allows analysts to:
 - identify suspicious parameters (e.g., encoded commands)
 - validate detection accuracy
 
-This level of visibility is critical for deep investigation and threat validation.
+The JSON view provides full visibility into the event, enabling deep inspection of command-line arguments and detection validation.
 
 ---
 
@@ -187,7 +188,15 @@ Example custom detection rules are available in the `rules/` directory.
 
 ---
 
-## 9. MITRE ATT&CK Mapping
+## 9. Detection Value
+
+This detection helps identify:
+
+- obfuscated PowerShell execution
+- potential command and control communication
+- misuse of legitimate tools (LOLBins)
+
+## 10. MITRE ATT&CK Mapping
 
 Observed activity in this lab aligns with:
 
@@ -197,7 +206,7 @@ This mapping helps connect raw telemetry to a known attacker technique and impro
 
 ---
 
-## 10. Key Findings
+## 11. Key Findings
 
 - Sysmon provides valuable endpoint visibility for process and network activity
 - Event ID 1 and Event ID 3 are useful for investigating suspicious PowerShell behavior
@@ -206,7 +215,7 @@ This mapping helps connect raw telemetry to a known attacker technique and impro
 
 ---
 
-## 11. Repository Structure
+## 12. Repository Structure
 
 ```
 wazuh-sysmon-detection-lab/
@@ -230,7 +239,7 @@ wazuh-sysmon-detection-lab/
 - README.md – project overview and findings
 
 
-## 12. Skills Demonstrated
+## 13. Skills Demonstrated
 
 This project demonstrates:
 
@@ -240,9 +249,11 @@ This project demonstrates:
 - Basic detection engineering concepts
 - MITRE ATT&CK mapping
 - SOC-style documentation and evidence presentation
+- SIEM investigation workflow
+- Log correlation
 
 
-## 13. Future Improvements
+## 14. Future Improvements
 
 Planned improvements for this lab:
 
@@ -253,7 +264,7 @@ Planned improvements for this lab:
 - Improve alert triage documentation
 
 
-## 14. How to Reproduce
+## 15. How to Reproduce
 
 Steps to reproduce this lab:
 
@@ -262,6 +273,17 @@ Steps to reproduce this lab:
 3. Install and connect Wazuh agent
 4. Execute PowerShell command to generate telemetry
 5. Review Sysmon logs and Wazuh alerts
+
+
+## 16. Conclusion
+
+This project reflects a real-world SOC investigation workflow, from initial telemetry to detection and analysis.
+This lab demonstrates how raw telemetry can be transformed into actionable security insights within a SIEM environment.
+
+The investigation highlights the importance of:
+- log visibility
+- detection rules
+- deep event analysis
 
 
 ## Author
