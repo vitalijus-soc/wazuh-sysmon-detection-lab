@@ -71,8 +71,9 @@ This event is useful because it shows:
 - command-line content
 - execution timestamp
 
-**Screenshot:**  
-`screenshots/sysmon-event-id-1-powershell-execution.png`
+### PowerShell Execution
+
+![PowerShell Command](screenshots/powershell-command-execution.png)
 
 ---
 
@@ -87,8 +88,9 @@ This event is important because it shows:
 - protocol used
 - timestamp of the connection
 
-**Screenshot:**  
-`screenshots/sysmon-event-id-3-network-connection.png`
+### Sysmon Event ID 3 – Network Connection
+
+![Sysmon Event ID 3](screenshots/sysmon-event-id-3-network-connection.png)
 
 ---
 
@@ -101,8 +103,9 @@ This confirms that:
 - Wazuh parsed the event data
 - the activity became visible for analyst review
 
-**Screenshot:**  
-`screenshots/wazuh-alert-t1059-001.png`
+### Wazuh Alert
+
+![Wazuh Alert](screenshots/wazuh-alert-t1059-001.png)
 
 ---
 
