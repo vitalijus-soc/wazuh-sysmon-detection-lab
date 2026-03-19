@@ -63,6 +63,8 @@ This allowed me to validate whether the telemetry pipeline from endpoint to SIEM
 
 ### Sysmon Event ID 1 – Process Creation
 
+### Sysmon Event ID 1 – Process Creation
+
 Sysmon captured the execution of `powershell.exe` together with its command-line arguments.
 
 This event is useful because it shows:
@@ -70,6 +72,8 @@ This event is useful because it shows:
 - executable path
 - command-line content
 - execution timestamp
+
+![Sysmon Event ID 1](screenshots/sysmon-event-id-1-process-creation.png)
 
 ### PowerShell Execution
 
