@@ -103,13 +103,77 @@ This confirms that:
 - Wazuh parsed the event data
 - the activity became visible for analyst review
 
-### Wazuh Alert
-
 ![Wazuh Alert](screenshots/wazuh-alert-t1059-001.png)
+
+### Wazuh Event Details (JSON)
+
+The raw event data collected by Wazuh provides detailed insight into the executed command.
+
+![Wazuh JSON Event](screenshots/wazuh-json-event.png)
+
+This allows analysts to:
+- inspect full command-line arguments
+- identify suspicious parameters (e.g., encoded commands)
+- validate detection accuracy
+
+This level of visibility is critical for deep investigation and threat validation.
 
 ---
 
-## 6. Detection Logic
+## 6. Advanced Analysis
+
+### Encoded PowerShell Execution
+
+This lab also includes an example of encoded PowerShell execution, which is commonly used for obfuscation.
+
+![Encoded PowerShell](screenshots/encoded-powershell.png)
+
+Encoded commands are commonly used by attackers to evade detection and hide malicious intent.
+
+---
+
+### Sysmon Event ID 1 – Encoded Command
+
+Sysmon captured the execution of an encoded PowerShell command, exposing the full command-line used during execution.
+
+![Sysmon Encoded Command](screenshots/sysmon-event-id-1-encoded.png)
+
+This provides visibility into:
+- encoded payload execution
+- process context
+- command-line arguments used by the attacker
+
+---
+
+### Wazuh Event Details (JSON View)
+
+Wazuh provides detailed event data including command-line arguments and process information.
+
+![Wazuh JSON](screenshots/wazuh-json.png)
+
+This allows analysts to investigate:
+- full command-line execution
+- encoded payloads
+- process context
+
+---
+
+## 7. SIEM Visibility
+
+### Wazuh Dashboard Overview
+
+The Wazuh dashboard provides centralized visibility into collected telemetry and alerts.
+
+![Wazuh Dashboard](screenshots/wazuh-dashboard.png)
+
+This allows analysts to:
+- monitor alert trends
+- identify suspicious activity
+- correlate events across systems
+
+This demonstrates how raw endpoint telemetry is transformed into actionable insights for SOC analysts.
+
+## 8. Detection Logic
 
 The core detection logic in this lab is based on identifying suspicious PowerShell execution and correlating it with endpoint telemetry collected by Sysmon.
 
@@ -123,7 +187,7 @@ Example custom detection rules are available in the `rules/` directory.
 
 ---
 
-## 7. MITRE ATT&CK Mapping
+## 9. MITRE ATT&CK Mapping
 
 Observed activity in this lab aligns with:
 
@@ -133,7 +197,7 @@ This mapping helps connect raw telemetry to a known attacker technique and impro
 
 ---
 
-## 8. Key Findings
+## 10. Key Findings
 
 - Sysmon provides valuable endpoint visibility for process and network activity
 - Event ID 1 and Event ID 3 are useful for investigating suspicious PowerShell behavior
@@ -142,7 +206,7 @@ This mapping helps connect raw telemetry to a known attacker technique and impro
 
 ---
 
-## 9. Repository Structure
+## 11. Repository Structure
 
 ```
 wazuh-sysmon-detection-lab/
@@ -166,7 +230,7 @@ wazuh-sysmon-detection-lab/
 - README.md – project overview and findings
 
 
-## 10. Skills Demonstrated
+## 12. Skills Demonstrated
 
 This project demonstrates:
 
@@ -178,7 +242,7 @@ This project demonstrates:
 - SOC-style documentation and evidence presentation
 
 
-## 11. Future Improvements
+## 13. Future Improvements
 
 Planned improvements for this lab:
 
@@ -189,7 +253,7 @@ Planned improvements for this lab:
 - Improve alert triage documentation
 
 
-## 12. How to Reproduce
+## 14. How to Reproduce
 
 Steps to reproduce this lab:
 
