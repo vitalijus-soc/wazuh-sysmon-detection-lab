@@ -1,0 +1,21 @@
+<group name="sysmon,powershell">
+
+  <rule id="100001" level="10">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)powershell\.exe</field>
+    <description>PowerShell execution detected</description>
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+  </rule>
+
+  <rule id="100002" level="13">
+    <if_sid>100001</if_sid>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)-enc|-encodedcommand</field>
+    <description>Encoded PowerShell command detected</description>
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+  </rule>
+
+</group>
